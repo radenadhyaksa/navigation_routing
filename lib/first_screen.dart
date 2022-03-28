@@ -1,3 +1,5 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -32,14 +34,17 @@ class FirstScreen extends StatelessWidget {
                * untuk menunggu nilai yang dikembalikan.
                */
               onPressed: () async {
-                final result = await Navigator.pushNamed(context, '/returnDataScreen');
+                final result =
+                    await Navigator.pushNamed(context, '/returnDataScreen');
                 SnackBar snackBar = SnackBar(content: Text('$result'));
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
             ),
             ElevatedButton(
               child: Text('Replace Screen'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/replacementScreen');
+              },
             ),
           ],
         ),
@@ -131,16 +136,40 @@ class _ReturnDataScreenState extends State<ReturnDataScreen> {
   }
 }
 
+//class Replace Screen
 class ReplacementScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text('Open Another Screen'),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/anotherScreen');
+          },
+        ),
+      ),
+    );
   }
 }
 
 class AnotherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('Back to First Screen'),
+          ElevatedButton(
+            child: Text('Back'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
+        ],
+      )),
+    );
   }
 }
