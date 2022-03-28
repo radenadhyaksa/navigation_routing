@@ -26,7 +26,16 @@ class FirstScreen extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Return Data from Another Screen'),
-              onPressed: () {},
+              /**
+               * dapat menyimpan nilainya ke dalam suatu variabel. 
+               * Jangan lupa untuk menggunakan async dan await 
+               * untuk menunggu nilai yang dikembalikan.
+               */
+              onPressed: () async {
+                final result = await Navigator.pushNamed(context, '/returnDataScreen');
+                SnackBar snackBar = SnackBar(content: Text('$result'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
             ),
             ElevatedButton(
               child: Text('Replace Screen'),
