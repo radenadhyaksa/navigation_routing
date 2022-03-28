@@ -19,7 +19,10 @@ class FirstScreen extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Navigation with Data'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/secondScreenWithData',
+                    arguments: 'Hello from First Screen!');
+              },
             ),
             ElevatedButton(
               child: Text('Return Data from Another Screen'),
@@ -59,7 +62,21 @@ class SecondScreenWithData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(data),
+          ElevatedButton(
+            child: Text('Back'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
+        ],
+      )),
+    );
   }
 }
 
