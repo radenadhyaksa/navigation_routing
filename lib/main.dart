@@ -17,17 +17,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => FirstScreen(),
         '/secondScreen': (context) => SecondScreen(),
-        '/secondScreenWithData': (context) =>
-            SecondScreenWithData(ModalRoute.of(context)?.settings.arguments as String),
+        '/secondScreenWithData': (context) => SecondScreenWithData(
+            ModalRoute.of(context)?.settings.arguments as String),
         '/returnDataScreen': (context) => ReturnDataScreen(),
         '/replacementScreen': (context) => ReplacementScreen(),
         '/anotherScreen': (context) => AnotherScreen(),
       },
     );
-  }
-}
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
